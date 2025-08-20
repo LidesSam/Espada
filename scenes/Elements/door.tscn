@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ofqxaux3dpn"]
+
+[ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_isy1w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d21wc"]
+size = Vector3(0.663696, 1.37769, 0.139771)
+
+[sub_resource type="PrismMesh" id="PrismMesh_isy1w"]
+
+[node name="door" type="Area3D"]
+transform = Transform3D(0.382937, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.03712, 0, 0, 0, 0.979, 0, 0, 0, 0.979, -0.00369937, 0.043859, 0.0104569)
+shape = SubResource("BoxShape3D_d21wc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0, 1.0766, -0.119385)
+mesh = SubResource("PrismMesh_isy1w")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_isy1w")

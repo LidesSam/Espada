@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cygaoueysys4i"]
+
+[ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_gmqtj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nujh"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_80s8i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_d7do2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmqtj"]
+albedo_color = Color(0.743223, 0.555425, 0.875612, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abje1"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 0, 0.223529, 1)
+roughness_texture = ExtResource("1_gmqtj")
+
+[sub_resource type="SphereMesh" id="SphereMesh_gplvt"]
+material = SubResource("StandardMaterial3D_abje1")
+radius = 0.1
+height = 0.1
+radial_segments = 4
+rings = 4
+
+[node name="player" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0nujh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0, 1.0766, -0.119385)
+mesh = SubResource("PrismMesh_80s8i")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_d7do2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gmqtj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31293, 1.5968)
+fov = 61.3215
+
+[node name="skin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768433, 0)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="skin"]
+speed_scale = 0.5
+explosiveness = 0.16
+randomness = 0.54
+lifetime_randomness = 0.22
+mesh = SubResource("SphereMesh_gplvt")
+direction = Vector3(0, 0, 10)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0

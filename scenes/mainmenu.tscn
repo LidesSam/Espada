@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dwv3g3l4k2emw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 346.0
+offset_top = 296.0
+offset_right = 683.0
+offset_bottom = 407.0
+text = "new game"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="file1" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 286.0
+offset_bottom = 82.0
+text = "new file"
+
+[node name="file2" type="Button" parent="Control"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 286.0
+offset_bottom = 178.0
+text = "new file"

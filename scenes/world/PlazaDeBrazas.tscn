@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://1fcwp6a2hpow"]
+
+[ext_resource type="PackedScene" uid="uid://nftxccfpfli1" path="res://scenes/Elements/NPC.tscn" id="1_34uc1"]
+[ext_resource type="PackedScene" uid="uid://c2ofqxaux3dpn" path="res://scenes/Elements/door.tscn" id="2_c3gid"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3gid"]
+size = Vector3(2.0011, 0.51355, 1.99219)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c3gid"]
+top_radius = 0.1
+bottom_radius = 1.0
+height = 1.0
+radial_segments = 8
+rings = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qsfs3"]
+height = 1.5
+radius = 1.04297
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3gid"]
+albedo_color = Color(0, 0.643137, 0.470588, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_qsfs3"]
+material = SubResource("StandardMaterial3D_c3gid")
+inner_radius = 0.1
+outer_radius = 0.2
+rings = 12
+ring_segments = 6
+
+[sub_resource type="Gradient" id="Gradient_mqh4y"]
+colors = PackedColorArray(0.115533, 0.0114107, 0.228532, 1, 5.96821e-06, 0.984025, 0.728952, 1)
+
+[node name="entry" type="Node3D"]
+
+[node name="doors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582737, 0)
+
+[node name="door" parent="doors" instance=ExtResource("2_c3gid")]
+transform = Transform3D(0.382937, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.15347)
+
+[node name="door2" parent="doors" instance=ExtResource("2_c3gid")]
+transform = Transform3D(-0.369889, 0, -0.258819, 0, 1, 0, 0.0991114, 0, -0.965926, 0, 0, 7.45187)
+
+[node name="door3" parent="doors" instance=ExtResource("2_c3gid")]
+transform = Transform3D(-0.0991114, 0, 0.965926, 0, 1, 0, -0.369889, 0, -0.258819, -8.08798, 0, 0)
+
+[node name="door4" parent="doors" instance=ExtResource("2_c3gid")]
+transform = Transform3D(-1.67387e-08, 0, -1, 0, 1, 0, 0.382937, 0, -4.37114e-08, 8.58262, 0, 0)
+
+[node name="actor" type="Node3D" parent="."]
+
+[node name="Npc" parent="actor" instance=ExtResource("1_34uc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722914, 1.0179, -3.1923)
+
+[node name="world" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="world"]
+transform = Transform3D(8.11851, 0, 0, 0, 0.990062, 0, 0, 0, 7.9106, 0, 0.198202, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57764e-05, -0.243225, -0.00012207)
+shape = SubResource("BoxShape3D_c3gid")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world/StaticBody3D"]
+mesh = SubResource("PlaneMesh_0yqho")
+skeleton = NodePath("../../..")
+
+[node name="fire" type="StaticBody3D" parent="world"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.492174, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world/fire"]
+mesh = SubResource("CylinderMesh_c3gid")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world/fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("CylinderShape3D_qsfs3")
+
+[node name="GPUParticles3D" type="CPUParticles3D" parent="world/fire"]
+mesh = SubResource("TorusMesh_qsfs3")
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector3(0, 12, 0)
+gravity = Vector3(0, 4, 0)
+initial_velocity_max = 0.1
+tangential_accel_min = -1.0
+tangential_accel_max = 1.0
+angle_min = -15.0
+angle_max = 15.0
+color = Color(0.101961, 0.380392, 0.647059, 1)
+color_ramp = SubResource("Gradient_mqh4y")

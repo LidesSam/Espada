@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://2fqsw4lljkgv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+
+[node name="entry" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_0yqho")
+skeleton = NodePath("../..")
