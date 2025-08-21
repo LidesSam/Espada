@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cygaoueysys4i"]
+[gd_scene load_steps=9 format=3 uid="uid://cygaoueysys4i"]
 
+[ext_resource type="Script" uid="uid://bcul5evrtkm1f" path="res://scenes/Elements/player.gd" id="1_abje1"]
 [ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_gmqtj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nujh"]
@@ -24,7 +25,10 @@ height = 0.1
 radial_segments = 4
 rings = 4
 
-[node name="player" type="RigidBody3D"]
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_abje1")
+
+[node name="fsm" type="Node" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0nujh")
@@ -39,8 +43,9 @@ mesh = SubResource("CapsuleMesh_d7do2")
 surface_material_override/0 = SubResource("StandardMaterial3D_gmqtj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31293, 1.5968)
-fov = 61.3215
+transform = Transform3D(1, 0, 0, 0, 0.990425, 0.13805, 0, -0.13805, 0.990425, 0, 1.31293, 1.90802)
+current = true
+fov = 102.852
 
 [node name="skin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768433, 0)
