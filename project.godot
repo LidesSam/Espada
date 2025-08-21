@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Espada"
+run/main_scene="uid://dwv3g3l4k2emw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

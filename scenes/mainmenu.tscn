@@ -1,30 +1,56 @@
-[gd_scene format=3 uid="uid://dwv3g3l4k2emw"]
+[gd_scene load_steps=2 format=3 uid="uid://dwv3g3l4k2emw"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://comjhodqs4vi1" path="res://scenes/mainmenu.gd" id="1_5mbse"]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 346.0
-offset_top = 296.0
-offset_right = 683.0
-offset_bottom = 407.0
-text = "new game"
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5mbse")
 
-[node name="Control" type="Control" parent="."]
-visible = false
+[node name="main" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="file1" type="Button" parent="Control"]
+[node name="NewGameBtn" type="Button" parent="main"]
+offset_left = 346.0
+offset_top = 256.0
+offset_right = 683.0
+offset_bottom = 367.0
+text = "new game"
+
+[node name="LoadGame" type="Button" parent="main"]
+offset_left = 346.0
+offset_top = 407.0
+offset_right = 683.0
+offset_bottom = 518.0
+text = "Load Game"
+
+[node name="load" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1147.0
+offset_bottom = 643.0
+
+[node name="file1" type="Button" parent="load"]
 layout_mode = 0
-offset_right = 286.0
-offset_bottom = 82.0
+offset_left = 371.0
+offset_top = 273.0
+offset_right = 657.0
+offset_bottom = 355.0
 text = "new file"
 
-[node name="file2" type="Button" parent="Control"]
+[node name="file2" type="Button" parent="load"]
 layout_mode = 0
-offset_top = 96.0
-offset_right = 286.0
-offset_bottom = 178.0
+offset_left = 371.0
+offset_top = 369.0
+offset_right = 657.0
+offset_bottom = 451.0
 text = "new file"
+
+[connection signal="pressed" from="main/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="main/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="load/file1" to="." method="_on_file_1_pressed"]
+[connection signal="pressed" from="load/file2" to="." method="_on_file_2_pressed"]
