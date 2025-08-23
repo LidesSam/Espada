@@ -25,6 +25,10 @@ ScreenTransition="*res://scenes/system/screenTransition.tscn"
 
 enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
 
+[global_group]
+
+trigger=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

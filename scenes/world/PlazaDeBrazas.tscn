@@ -32,26 +32,33 @@ ring_segments = 6
 [sub_resource type="Gradient" id="Gradient_mqh4y"]
 colors = PackedColorArray(0.115533, 0.0114107, 0.228532, 1, 5.96821e-06, 0.984025, 0.728952, 1)
 
-[node name="entry" type="Node3D"]
+[node name="plazaDeBrazas" type="Node3D"]
 
 [node name="doors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582737, 0)
 
-[node name="door" parent="doors" instance=ExtResource("2_c3gid")]
-transform = Transform3D(0.382937, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.15347)
+[node name="door_entrada_iluminada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+actorsParentNode = NodePath("../../actors")
 
-[node name="door2" parent="doors" instance=ExtResource("2_c3gid")]
-transform = Transform3D(-0.369889, 0, -0.258819, 0, 1, 0, 0.0991114, 0, -0.965926, 0, 0, 7.45187)
-
-[node name="door3" parent="doors" instance=ExtResource("2_c3gid")]
-transform = Transform3D(-0.0991114, 0, 0.965926, 0, 1, 0, -0.369889, 0, -0.258819, -8.08798, 0, 0)
-
-[node name="door4" parent="doors" instance=ExtResource("2_c3gid")]
+[node name="door_arboleda_Negra" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
 transform = Transform3D(-1.67387e-08, 0, -1, 0, 1, 0, 0.382937, 0, -4.37114e-08, 8.58262, 0, 0)
+targetScene = "res://scenes/world/ArboledaNegra.tscn"
+actorsParentNode = NodePath("../../actors")
 
-[node name="actor" type="Node3D" parent="."]
+[node name="door_castillo" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(-0.382937, 0, 8.74228e-08, 0, 1, 0, -3.34774e-08, 0, -1, 0, 0, 7.45187)
+targetScene = "res://scenes/world/CastilloCreciente.tscn"
+actorsParentNode = NodePath("../../actors")
 
-[node name="Npc" parent="actor" instance=ExtResource("1_34uc1")]
+[node name="door_cascada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(-1.67387e-08, 0, 1, 0, 1, 0, -0.382937, 0, -4.37114e-08, -8.08798, 0, 0)
+targetScene = "res://scenes/world/CascadaVacia.tscn"
+actorsParentNode = NodePath("../../actors")
+
+[node name="actors" type="Node3D" parent="."]
+
+[node name="Npc" parent="actors" instance=ExtResource("1_34uc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722914, 1.0179, -3.1923)
 
 [node name="world" type="Node3D" parent="."]
@@ -69,6 +76,14 @@ skeleton = NodePath("../../..")
 
 [node name="fire" type="StaticBody3D" parent="world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.492174, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="world/fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.608601, 0)
+light_color = Color(0.721196, 0.993315, 0.858385, 1)
+light_energy = 13.121
+light_indirect_energy = 5.04
+light_volumetric_fog_energy = 1.515
+omni_range = 11.2863
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="world/fire"]
 mesh = SubResource("CylinderMesh_c3gid")

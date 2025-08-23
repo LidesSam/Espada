@@ -14,6 +14,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="NewGameBtn" type="Button" parent="main"]
+layout_mode = 0
 offset_left = 346.0
 offset_top = 256.0
 offset_right = 683.0
@@ -21,6 +22,7 @@ offset_bottom = 367.0
 text = "new game"
 
 [node name="LoadGame" type="Button" parent="main"]
+layout_mode = 0
 offset_left = 346.0
 offset_top = 407.0
 offset_right = 683.0

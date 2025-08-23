@@ -1,23 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2ofqxaux3dpn"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ofqxaux3dpn"]
 
+[ext_resource type="Script" uid="uid://do7w5kp4ji44u" path="res://scenes/Elements/door.gd" id="1_c55ij"]
 [ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_isy1w"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d21wc"]
-size = Vector3(0.663696, 1.37769, 0.139771)
 
 [sub_resource type="PrismMesh" id="PrismMesh_isy1w"]
 
-[node name="door" type="Area3D"]
-transform = Transform3D(0.382937, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_d21wc"]
+size = Vector3(8, 8, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.03712, 0, 0, 0, 0.979, 0, 0, 0, 0.979, -0.00369937, 0.043859, 0.0104569)
-shape = SubResource("BoxShape3D_d21wc")
+[sub_resource type="SphereMesh" id="SphereMesh_c55ij"]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0, 1.0766, -0.119385)
+[node name="door" type="Area3D" groups=["trigger"]]
+script = ExtResource("1_c55ij")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, -0.00369937, 8.21165, -0.108928)
 mesh = SubResource("PrismMesh_isy1w")
 skeleton = NodePath("../MeshInstance3D")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_d21wc")
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78844, 0)
 texture = ExtResource("1_isy1w")
+
+[node name="spawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("SphereMesh_c55ij")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
