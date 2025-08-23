@@ -1,11 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcut0gseumyh8"]
+[gd_scene load_steps=5 format=3 uid="uid://bcut0gseumyh8"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+[ext_resource type="PackedScene" uid="uid://c2ofqxaux3dpn" path="res://scenes/Elements/door.tscn" id="1_abirp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_le47q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5qpq5"]
+size = Vector3(16, 1, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_btk8e"]
 
 [node name="entry" type="Node3D"]
+
+[node name="actors" type="Node3D" parent="."]
+
+[node name="door" parent="." node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("1_abirp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 8)
+targetScene = "res://scenes/world/CastilloCreciente.tscn"
+actorsParentNode = NodePath("../actors")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_0yqho")
+transform = Transform3D(7.88244, 0, 0, 0, 0.997778, 0, 0, 0, 7.78267, 0, 0, 0)
+mesh = SubResource("PlaneMesh_le47q")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_5qpq5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614726, 0.788741, 0, -0.788741, 0.614726, -0.381685, 9.46569, 2.70345)
+light_color = Color(0.92549, 0.607843, 0.176471, 1)
+
+[node name="Chest" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+mesh = SubResource("BoxMesh_btk8e")
 skeleton = NodePath("../..")

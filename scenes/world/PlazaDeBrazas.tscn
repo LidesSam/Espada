@@ -34,32 +34,32 @@ colors = PackedColorArray(0.115533, 0.0114107, 0.228532, 1, 5.96821e-06, 0.98402
 
 [node name="plazaDeBrazas" type="Node3D"]
 
-[node name="doors" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582737, 0)
-
-[node name="door_entrada_iluminada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-actorsParentNode = NodePath("../../actors")
-
-[node name="door_arboleda_Negra" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(-1.67387e-08, 0, -1, 0, 1, 0, 0.382937, 0, -4.37114e-08, 8.58262, 0, 0)
-targetScene = "res://scenes/world/ArboledaNegra.tscn"
-actorsParentNode = NodePath("../../actors")
-
-[node name="door_castillo" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(-0.382937, 0, 8.74228e-08, 0, 1, 0, -3.34774e-08, 0, -1, 0, 0, 7.45187)
-targetScene = "res://scenes/world/CastilloCreciente.tscn"
-actorsParentNode = NodePath("../../actors")
-
-[node name="door_cascada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(-1.67387e-08, 0, 1, 0, 1, 0, -0.382937, 0, -4.37114e-08, -8.08798, 0, 0)
-targetScene = "res://scenes/world/CascadaVacia.tscn"
-actorsParentNode = NodePath("../../actors")
-
 [node name="actors" type="Node3D" parent="."]
 
 [node name="Npc" parent="actors" instance=ExtResource("1_34uc1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722914, 1.0179, -3.1923)
+
+[node name="doors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582737, 0)
+
+[node name="door_entrada_iluminada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(-0.999998, -7.93424e-11, 0.00181523, -7.93424e-11, 1, 7.29582e-14, -0.00181523, -7.29512e-14, -0.999998, 0.233046, 0, 15.7261)
+actorsParentNode = NodePath("../../actors")
+
+[node name="door_arboleda_Negra" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(0.00181527, -7.93424e-11, 0.999998, 7.29616e-14, 1, 7.93424e-11, -0.999998, -7.10666e-14, 0.00181527, -14.335, 0, -0.28942)
+targetScene = "res://scenes/world/ArboledaNegra.tscn"
+actorsParentNode = NodePath("../../actors")
+
+[node name="door_castillo" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(0.999998, -7.93424e-11, -0.00181532, 7.93424e-11, 1, -7.10803e-14, 0.00181532, -7.29512e-14, 0.999998, 0.261095, 0, -15.7257)
+targetScene = "res://scenes/world/CastilloCreciente.tscn"
+actorsParentNode = NodePath("../../actors")
+
+[node name="door_cascada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
+transform = Transform3D(-0.00181524, -7.93424e-11, -0.999998, -7.29547e-14, 1, -7.93424e-11, 0.999998, -7.1071e-14, -0.00181524, 14.3355, 0, -0.216099)
+targetScene = "res://scenes/world/CascadaVacia.tscn"
+actorsParentNode = NodePath("../../actors")
 
 [node name="world" type="Node3D" parent="."]
 
@@ -67,10 +67,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722914, 1.0179, -3.1923)
 transform = Transform3D(8.11851, 0, 0, 0, 0.990062, 0, 0, 0, 7.9106, 0, 0.198202, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="world/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57764e-05, -0.243225, -0.00012207)
+transform = Transform3D(1.88526, 0, 0, 0, 0.992243, 0, 0, 0, 2.08371, 0, 0, 0)
 shape = SubResource("BoxShape3D_c3gid")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="world/StaticBody3D"]
+transform = Transform3D(1.9, 0, 0, 0, 1, 0, 0, 0, 2.1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_0yqho")
 skeleton = NodePath("../../..")
 
@@ -105,3 +106,10 @@ angle_min = -15.0
 angle_max = 15.0
 color = Color(0.101961, 0.380392, 0.647059, 1)
 color_ramp = SubResource("Gradient_mqh4y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614726, 0.788741, 0, -0.788741, 0.614726, 0.0109053, 20.5407, -0.0321283)
+light_color = Color(0.350131, 0.000937058, 0.164489, 1)
+light_energy = 0.5
+
+[editable path="doors/door_entrada_iluminada"]

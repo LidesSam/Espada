@@ -1,11 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://2fqsw4lljkgv"]
+[gd_scene load_steps=5 format=3 uid="uid://2fqsw4lljkgv"]
+
+[ext_resource type="PackedScene" uid="uid://c2ofqxaux3dpn" path="res://scenes/Elements/door.tscn" id="1_oop1p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppu2w"]
+size = Vector3(32, 1, 32)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_oop1p"]
 
 [node name="entry" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(15.9291, 0, 0, 0, 0.995569, 0, 0, 0, 15.9291, 0, 0, 0)
 mesh = SubResource("PlaneMesh_0yqho")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ppu2w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614726, 0.788741, 0, -0.788741, 0.614726, 0, 8.54068, 0)
+
+[node name="doors" type="Node3D" parent="."]
+
+[node name="door" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("1_oop1p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 15)
+targetScene = "res://scenes/world/PlazaDeBrazas.tscn"
+actorsParentNode = NodePath("../../actors")
+
+[node name="door2" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("1_oop1p")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.0433309, 0.014925, -15.0074)
+targetScene = "res://scenes/world/SalaDeJoyas.tscn"
+actorsParentNode = NodePath("../../actors")
+
+[node name="actors" type="Node3D" parent="."]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.44757)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("TubeTrailMesh_oop1p")

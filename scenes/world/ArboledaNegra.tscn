@@ -1,11 +1,116 @@
-[gd_scene load_steps=2 format=3 uid="uid://cofctcu3yhwfh"]
+[gd_scene load_steps=8 format=3 uid="uid://cofctcu3yhwfh"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+[ext_resource type="PackedScene" uid="uid://c2ofqxaux3dpn" path="res://scenes/Elements/door.tscn" id="1_a55bu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkb2u"]
+albedo_color = Color(1, 0.41126, 0.301022, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n376w"]
+material = SubResource("StandardMaterial3D_tkb2u")
+bottom_radius = 1.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ul41"]
+albedo_color = Color(0.692712, 1, 0.550598, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5xd22"]
+material = SubResource("StandardMaterial3D_0ul41")
+radius = 2.0
+height = 4.0
+radial_segments = 8
+rings = 4
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a55bu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkb2u"]
+size = Vector3(16, 1, 16)
 
 [node name="entry" type="Node3D"]
+
+[node name="actors" type="Node3D" parent="."]
+
+[node name="door" parent="." node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("1_a55bu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 0)
+targetScene = "res://scenes/world/PlazaDeBrazas.tscn"
+actorsParentNode = NodePath("../actors")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0507941, 2, -0.0264416)
+mesh = SubResource("CylinderMesh_n376w")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147429, 5.03852, -0.0039711)
+mesh = SubResource("SphereMesh_5xd22")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_n376w")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147429, 5.03852, -0.0039711)
+mesh = SubResource("SphereMesh_5xd22")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_n376w")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147429, 5.03852, -0.0039711)
+mesh = SubResource("SphereMesh_5xd22")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_n376w")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147429, 5.03852, -0.0039711)
+mesh = SubResource("SphereMesh_5xd22")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_n376w")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147429, 5.03852, -0.0039711)
+mesh = SubResource("SphereMesh_5xd22")
+skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_0yqho")
+transform = Transform3D(7.88244, 0, 0, 0, 0.997778, 0, 0, 0, 7.78267, 0, 0, 0)
+mesh = SubResource("PlaneMesh_a55bu")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_tkb2u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614726, 0.788741, 0, -0.788741, 0.614726, 0, 8.54068, 0)

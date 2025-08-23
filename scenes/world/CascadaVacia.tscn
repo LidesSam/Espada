@@ -1,11 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://m7e6o5ex1drc"]
+[gd_scene load_steps=6 format=3 uid="uid://m7e6o5ex1drc"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0yqho"]
+[ext_resource type="PackedScene" uid="uid://c2ofqxaux3dpn" path="res://scenes/Elements/door.tscn" id="1_q6ack"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_q6ack"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7j5n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q6ack"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c7j5n"]
+size = Vector3(16, 1, 16)
 
 [node name="entry" type="Node3D"]
+
+[node name="actors" type="Node3D" parent="."]
+
+[node name="door" parent="." node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("1_q6ack")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 0)
+targetScene = "res://scenes/world/PlazaDeBrazas.tscn"
+actorsParentNode = NodePath("../actors")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 13, 0)
+mesh = SubResource("TorusMesh_q6ack")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="MeshInstance3D"]
+mesh = SubResource("BoxMesh_c7j5n")
+radial_accel_max = 60.0
+angle_max = 720.0
+color = Color(0.435294, 1, 1, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_0yqho")
+transform = Transform3D(7.88244, 0, 0, 0, 0.997778, 0, 0, 0, 7.78267, 0, 0, 0)
+mesh = SubResource("PlaneMesh_q6ack")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_c7j5n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.614726, 0.788741, 0, -0.788741, 0.614726, 0, 8.54068, 0)
