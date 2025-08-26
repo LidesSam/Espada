@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwv3g3l4k2emw"]
+[gd_scene load_steps=3 format=3 uid="uid://dwv3g3l4k2emw"]
 
 [ext_resource type="Script" uid="uid://comjhodqs4vi1" path="res://scenes/mainmenu.gd" id="1_5mbse"]
+[ext_resource type="PackedScene" uid="uid://ynqs2b43ib1t" path="res://scenes/system/components/saveFileControl.tscn" id="2_natt5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,18 +16,18 @@ offset_bottom = 40.0
 
 [node name="NewGameBtn" type="Button" parent="main"]
 layout_mode = 0
-offset_left = 346.0
-offset_top = 256.0
-offset_right = 683.0
-offset_bottom = 367.0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 320.0
 text = "new game"
 
 [node name="LoadGame" type="Button" parent="main"]
 layout_mode = 0
-offset_left = 346.0
-offset_top = 407.0
-offset_right = 683.0
-offset_bottom = 518.0
+offset_left = 320.0
+offset_top = 384.0
+offset_right = 832.0
+offset_bottom = 512.0
 text = "Load Game"
 
 [node name="load" type="Control" parent="."]
@@ -36,23 +37,48 @@ anchors_preset = 0
 offset_right = 1147.0
 offset_bottom = 643.0
 
-[node name="file1" type="Button" parent="load"]
-layout_mode = 0
-offset_left = 371.0
-offset_top = 273.0
-offset_right = 657.0
-offset_bottom = 355.0
-text = "new file"
+[node name="Control" type="Control" parent="load"]
+anchors_preset = 0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 576.0
 
-[node name="file2" type="Button" parent="load"]
+[node name="SaveFileControl" parent="load/Control" instance=ExtResource("2_natt5")]
+self_modulate = Color(0.130465, 0.0791723, 0.184749, 1)
+layout_mode = 1
+anchor_left = 0.0555556
+anchor_right = 0.944444
+offset_top = 64.0
+offset_bottom = 77.4321
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SaveFileControl2" parent="load/Control" instance=ExtResource("2_natt5")]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 63.9999
+offset_bottom = 208.432
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SaveFileControl3" parent="load/Control" instance=ExtResource("2_natt5")]
+layout_mode = 1
+offset_left = 63.9999
+offset_top = 320.0
+offset_right = 63.9999
+offset_bottom = 336.432
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="closedFileSelectionBtn" type="Button" parent="load"]
 layout_mode = 0
-offset_left = 371.0
-offset_top = 369.0
-offset_right = 657.0
-offset_bottom = 451.0
-text = "new file"
+offset_left = 1016.0
+offset_top = 568.0
+offset_right = 1144.0
+offset_bottom = 632.0
+text = "back"
 
 [connection signal="pressed" from="main/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="main/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="load/file1" to="." method="_on_file_1_pressed"]
-[connection signal="pressed" from="load/file2" to="." method="_on_file_2_pressed"]
+[connection signal="pressed" from="load/closedFileSelectionBtn" to="." method="_on_closed_file_selection_btn_pressed"]

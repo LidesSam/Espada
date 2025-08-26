@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://ynqs2b43ib1t"]
+
+[ext_resource type="Texture2D" uid="uid://cqgobfpwedcyt" path="res://addons/fsmgear/assets/fsm-icons/fsmState.png" id="1_bs7l8"]
+[ext_resource type="Script" uid="uid://d0r1xx5f4akg6" path="res://scenes/system/components/save_file_control.gd" id="1_lxp6j"]
+
+[node name="SaveFileControl" type="ColorRect"]
+self_modulate = Color(0.130465, 0.0791723, 0.184749, 1)
+anchors_preset = -1
+anchor_right = 0.888889
+anchor_bottom = 0.0987654
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lxp6j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("1_bs7l8")
+stretch_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 640.0
+offset_bottom = 64.0
+text = "--empty--"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.625
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SaveBtn" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NEW G"
+
+[node name="LoadBtn" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="CopyBtn" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Copy"
+
+[node name="DelBtn" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Delete"

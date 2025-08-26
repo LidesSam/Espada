@@ -24,3 +24,9 @@ func _on_file_1_pressed() -> void:
 
 func _on_file_2_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_closed_file_selection_btn_pressed() -> void:
+	$main.show()
+	$load.hide()
+	pass # Replace with function body.
