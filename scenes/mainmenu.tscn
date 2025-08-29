@@ -44,7 +44,6 @@ offset_right = 1152.0
 offset_bottom = 576.0
 
 [node name="SaveFileControl" parent="load/Control" instance=ExtResource("2_natt5")]
-self_modulate = Color(0.130465, 0.0791723, 0.184749, 1)
 layout_mode = 1
 anchor_left = 0.0555556
 anchor_right = 0.944444

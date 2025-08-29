@@ -43,21 +43,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722914, 1.0179, -3.1923)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.582737, 0)
 
 [node name="door_entrada_iluminada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(-0.999998, -7.93424e-11, 0.00181523, -7.93424e-11, 1, 7.29582e-14, -0.00181523, -7.29512e-14, -0.999998, 0.233046, 0, 15.7261)
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0.233046, 0, 15.7261)
 actorsParentNode = NodePath("../../actors")
 
 [node name="door_arboleda_Negra" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(0.00181527, -7.93424e-11, 0.999998, 7.29616e-14, 1, 7.93424e-11, -0.999998, -7.10666e-14, 0.00181527, -14.335, 0, -0.28942)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.335, 0, -0.28942)
 targetScene = "res://scenes/world/ArboledaNegra.tscn"
 actorsParentNode = NodePath("../../actors")
 
 [node name="door_castillo" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(0.999998, -7.93424e-11, -0.00181532, 7.93424e-11, 1, -7.10803e-14, 0.00181532, -7.29512e-14, 0.999998, 0.261095, 0, -15.7257)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.261095, 0, -15.7257)
 targetScene = "res://scenes/world/CastilloCreciente.tscn"
 actorsParentNode = NodePath("../../actors")
 
 [node name="door_cascada" parent="doors" node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_c3gid")]
-transform = Transform3D(-0.00181524, -7.93424e-11, -0.999998, -7.29547e-14, 1, -7.93424e-11, 0.999998, -7.1071e-14, -0.00181524, 14.3355, 0, -0.216099)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.3355, 0, -0.216099)
 targetScene = "res://scenes/world/CascadaVacia.tscn"
 actorsParentNode = NodePath("../../actors")
 

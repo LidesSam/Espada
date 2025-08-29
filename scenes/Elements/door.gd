@@ -17,6 +17,9 @@ func _ready() -> void:
 		if(Global.player and actorsParentNode!=null):
 			print("door:adding player to parent node")
 			Global.player.global_position = $spawn.global_position
+			Global.player.rotation=$spawn.global_rotation
+			print("rot:",rotation)
+			
 			actorsParentNode.add_child(Global.player)
 				
 

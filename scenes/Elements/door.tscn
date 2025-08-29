@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2ofqxaux3dpn"]
+[gd_scene load_steps=5 format=3 uid="uid://c2ofqxaux3dpn"]
 
 [ext_resource type="Script" uid="uid://do7w5kp4ji44u" path="res://scenes/Elements/door.gd" id="1_c55ij"]
 [ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_isy1w"]
@@ -7,8 +7,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d21wc"]
 size = Vector3(8, 8, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_c55ij"]
 
 [node name="door" type="Area3D" groups=["trigger"]]
 script = ExtResource("1_c55ij")
@@ -27,9 +25,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78844, 0)
 texture = ExtResource("1_isy1w")
 
 [node name="spawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="spawn"]
-mesh = SubResource("SphereMesh_c55ij")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0.0470819, 0.19297, -0.157695)
+mesh = SubResource("PrismMesh_isy1w")
+skeleton = NodePath("")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
