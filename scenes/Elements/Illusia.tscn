@@ -28,27 +28,29 @@ rings = 4
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_abje1")
 
-[node name="fsm" type="Node" parent="."]
+[node name="Fsm" type="Node" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_0nujh")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0, 1.0766, -0.119385)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 0.174823, 0, -1, -7.64174e-09, 0, 2.0766, -0.119385)
 mesh = SubResource("PrismMesh_80s8i")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_d7do2")
 surface_material_override/0 = SubResource("StandardMaterial3D_gmqtj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.990425, 0.13805, 0, -0.13805, 0.990425, 0, 1.31293, 1.90802)
+transform = Transform3D(1, 0, 0, 0, 0.990425, 0.13805, 0, -0.13805, 0.990425, 0, 2.31293, 1.90802)
 current = true
 fov = 102.852
 
 [node name="skin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768433, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76843, 0)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="skin"]
 speed_scale = 0.5
@@ -60,3 +62,9 @@ direction = Vector3(0, 0, 10)
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 2.0
+
+[node name="groundDetector" type="RayCast3D" parent="."]
+
+[node name="onFront" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -1)

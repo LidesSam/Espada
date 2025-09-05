@@ -14,6 +14,9 @@ albedo_color = Color(0.000914195, 0.05364, 0.124657, 1)
 [node name="EntradaIluminada" type="Node3D"]
 script = ExtResource("1_v646w")
 
+[node name="droppoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+
 [node name="actors" type="Node3D" parent="."]
 
 [node name="door" parent="." node_paths=PackedStringArray("actorsParentNode") instance=ExtResource("2_jhygp")]
