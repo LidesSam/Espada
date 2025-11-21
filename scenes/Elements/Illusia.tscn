@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cygaoueysys4i"]
+[gd_scene load_steps=11 format=3 uid="uid://cygaoueysys4i"]
 
 [ext_resource type="Script" uid="uid://bcul5evrtkm1f" path="res://scenes/Elements/player.gd" id="1_abje1"]
 [ext_resource type="Texture2D" uid="uid://cklyu332jpwn7" path="res://icon.svg" id="1_gmqtj"]
+[ext_resource type="Script" uid="uid://bkd7u3ab7fqp8" path="res://addons/fsmgear/source/Fsm.gd" id="2_5fcoq"]
+[ext_resource type="Script" uid="uid://brf2lfa11c3be" path="res://addons/fsmgear/source/FsmState.gd" id="3_rpwkx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nujh"]
 
@@ -29,6 +31,27 @@ rings = 4
 script = ExtResource("1_abje1")
 
 [node name="Fsm" type="Node" parent="."]
+script = ExtResource("2_5fcoq")
+
+[node name="idle" type="Node" parent="Fsm"]
+script = ExtResource("3_rpwkx")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="slash" type="Node" parent="Fsm"]
+script = ExtResource("3_rpwkx")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="dash" type="Node" parent="Fsm"]
+script = ExtResource("3_rpwkx")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="fall" type="Node" parent="Fsm"]
+script = ExtResource("3_rpwkx")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="jump" type="Node" parent="Fsm"]
+script = ExtResource("3_rpwkx")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -68,3 +91,8 @@ initial_velocity_max = 2.0
 [node name="onFront" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 target_position = Vector3(0, 0, -1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 191.0
+offset_bottom = 23.0
+text = "pstatate"

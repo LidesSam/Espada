@@ -3,11 +3,21 @@ extends CharacterBody3D
 var speed: float = 10.0
 var gravity: float = 9.8 *50
 var move_velocity: Vector3 = Vector3.ZERO
+var jump_impulse: float = 200
 
 @onready var fsm=$Fsm
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	fsm.autoload(self)
+	fsm.set_debug_on($Label)
+	fsm.addStateTransition("falling","idle",grounded)
+	fsm.addStateTransition("idle","jump",grounded)
+	fsm.addStateTransition("jump","falling",is_falling)
 	
+	fsm.startState()
+	
+func _physics_process(delta: float) -> void:
+	fsm.fsmUpdate(delta)
 	var dir = Vector3.ZERO
 
 	if Input.is_action_pressed("ui_up"):
@@ -26,12 +36,21 @@ func _physics_process(delta: float) -> void:
 		
 	move_velocity = dir * speed
 	velocity = move_velocity
-	if not grounded():
-		velocity.y -= gravity * delta
-	else:
+	# JUMP INPUT
+	if grounded():
+		if Input.is_action_just_pressed("ui_back"):
+			velocity.y = jump_impulse
 		if velocity.y < 0:
 			velocity.y = 0
+			
+	else:
+		velocity.y -= gravity * delta
+
+		
 	move_and_slide()
+
+func is_falling():
+	return velocity.y <0 and not grounded() 
 	
 func grounded():
 	var ray= $groundDetector
