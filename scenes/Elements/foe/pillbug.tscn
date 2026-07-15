@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dcv5mef13cmoi"]
+
+[ext_resource type="Script" uid="uid://bkd7u3ab7fqp8" path="res://addons/fsmgear/source/Fsm.gd" id="1_p1561"]
+[ext_resource type="Script" uid="uid://dy0th5q6c8pva" path="res://scenes/Elements/foe/pillbug.gd" id="1_xboiy"]
+[ext_resource type="Script" uid="uid://brf2lfa11c3be" path="res://addons/fsmgear/source/FsmState.gd" id="2_xboiy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ufay"]
+radius = 0.36547852
+height = 0.97488403
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffexf"]
+albedo_color = Color(0.3019608, 1, 0.14901961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p4pfe"]
+
+[node name="pillbug" type="CharacterBody3D" unique_id=1687988680 groups=["foes"]]
+script = ExtResource("1_xboiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1673381750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004196167, 0)
+shape = SubResource("CapsuleShape3D_8ufay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=485797037]
+material_override = SubResource("StandardMaterial3D_ffexf")
+mesh = SubResource("SphereMesh_p4pfe")
+
+[node name="fsm" type="Node" parent="." unique_id=438886217]
+script = ExtResource("1_p1561")
+
+[node name="idle" type="Node" parent="fsm" unique_id=974566281]
+script = ExtResource("2_xboiy")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="rollback" type="Node" parent="fsm" unique_id=795209864]
+script = ExtResource("2_xboiy")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="death" type="Node" parent="fsm" unique_id=301976330]
+script = ExtResource("2_xboiy")
+metadata/_custom_type_script = "uid://brf2lfa11c3be"
+
+[node name="hitTimer" type="Timer" parent="." unique_id=1390766704]
+wait_time = 3.0
+one_shot = true
+
+[node name="moveTimer" type="Timer" parent="." unique_id=618918484]
+wait_time = 2.0
+one_shot = true
