@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://nftxccfpfli1"]
+[gd_scene format=3 uid="uid://nftxccfpfli1"]
 
-[ext_resource type="PackedScene" uid="uid://d0jgwgtqurijv" path="res://assets/models/Note-riggedeyes.blend" id="1_d7do2"]
+[ext_resource type="PackedScene" uid="uid://d2xoh2qcy1hbj" path="res://assets/models/note_riggedeyes.tscn" id="1_d7do2"]
+[ext_resource type="Script" uid="uid://comkw8db8wlj4" path="res://scenes/Elements/npc.gd" id="1_vtqtm"]
+[ext_resource type="Texture2D" uid="uid://c26lrhwfx0giy" path="res://assets/models/textures/eyes/eyecatcher.png" id="2_1phyj"]
+[ext_resource type="Script" uid="uid://b2hrdh4fuh6o7" path="res://addons/babylontower/source/interactive.gd" id="4_c1uy3"]
+[ext_resource type="Texture2D" uid="uid://d4cni7jp5vsuc" path="res://assets/models/textures/eyes/eyecatcher/eyectacher_1.png" id="5_c1uy3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0nujh"]
 
-[node name="Npc" type="RigidBody3D"]
+[node name="Npc" type="RigidBody3D" unique_id=1159746363]
+script = ExtResource("1_vtqtm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2022006236]
 shape = SubResource("CapsuleShape3D_0nujh")
 
-[node name="Note-riggedeyes" parent="." instance=ExtResource("1_d7do2")]
+[node name="Note-riggedeyes2" parent="." unique_id=1822692741 instance=ExtResource("1_d7do2")]
+
+[node name="talk" type="Sprite3D" parent="." unique_id=1012671682]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 6, 0)
+visible = false
+texture = ExtResource("2_1phyj")
+hframes = 3
+vframes = 3
+frame = 4
+script = ExtResource("4_c1uy3")
+
+[node name="Sprite3D" type="Sprite3D" parent="talk" unique_id=1931293480]
+texture = ExtResource("5_c1uy3")

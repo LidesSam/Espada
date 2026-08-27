@@ -1,15 +1,13 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://byeyxmtx0kscd"]
 
-[node name="VBoxContainer" type="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" unique_id=806858510]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="fsm gear" type="Label" parent="."]
-offset_right = 320.0
-offset_bottom = 14.0
+[node name="fsm gear" type="Label" parent="." unique_id=712145208]
+layout_mode = 2
 text = "FSM GEAR v1.0"
 
-[node name="Control" type="VBoxContainer" parent="."]
-offset_top = 18.0
-offset_right = 320.0
-offset_bottom = 18.0
+[node name="Control" type="VBoxContainer" parent="." unique_id=1421446310]
+layout_mode = 2

@@ -27,7 +27,7 @@ ScreenTransition="*res://scenes/system/screenTransition.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fsmgear/plugin.cfg")
+enabled=PackedStringArray("res://addons/babylontower/plugin.cfg", "res://addons/fsmgear/plugin.cfg")
 
 [global_group]
 

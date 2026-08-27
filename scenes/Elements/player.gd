@@ -59,3 +59,15 @@ func grounded():
 func is_on_front():
 	var ray= $onfront
 	return ray.is_colliding()
+
+
+func _on_talk_area_body_entered(body: Node3D) -> void:
+	if body.has_method("get_interactive"):
+		body.get_interactive().on_interaction_range()
+	pass # Replace with function body.
+
+
+func _on_talk_area_body_exited(body: Node3D) -> void:
+	if body.has_method("get_interactive"):
+		body.get_interactive().on_interaction_range(false)
+	pass # Replace with function body.
